@@ -69,3 +69,14 @@ code {
   border-radius: 3px;
   font-family: Consolas, monospace;
 }
+
+.botones {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.botones form {
+    display: inline-block;
+    margin-right: 45px;
+}
