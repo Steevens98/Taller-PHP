@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Registro de Usuario</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
+
 <body>
 
     <h1>Formulario de Registro</h1>
@@ -16,16 +18,17 @@
             type="text"
             name="cedula"
             maxlength="10"
-            required
-        ><br><br>
+            minlength="10"
+            pattern="[0-9]{10}"
+            title="La cédula debe contener exactamente 10 dígitos."
+            required><br><br>
 
         <label>Nombre:</label><br>
         <input
             type="text"
             name="nombre"
             maxlength="30"
-            required
-        ><br><br>
+            required><br><br>
 
         <label>Estado Civil:</label><br>
         <select name="estado_civil" required>
@@ -39,16 +42,14 @@
         <input
             type="email"
             name="correo"
-            required
-        ><br><br>
+            required><br><br>
 
         <label>Clave:</label><br>
         <input
             type="password"
             name="clave"
             minlength="6"
-            required
-        ><br><br>
+            required><br><br>
 
         <input type="submit" value="Registrar">
         <input type="reset" value="Resetear">
@@ -56,4 +57,5 @@
     </form>
 
 </body>
+
 </html>
