@@ -2,12 +2,12 @@
 session_start();
 require "usuario.php";
 require "registros.php";
- 
+
 $error = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cedula = $_POST['cedula'];
     $clave  = $_POST['clave'];
- 
+
     if (autenticar($cedula, $clave)) {
         $_SESSION['cedula'] = $cedula;
         header("Location: tareas.php");
@@ -20,16 +20,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html>
-<head><link rel="stylesheet" href="estilos.css"></head>
+
+<head>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
 <body>
-    <h1>Ingreso</h1>
-    <?php if ($error): ?><p style="color:red;"><?= $error ?></p><?php endif; ?>
-    <form method="POST" action="ingreso.php">
-        <label>Cédula:</label>
-        <input type="text" name="cedula" required><br>
-        <label>Contraseña:</label>
-        <input type="password" name="clave" required><br>
-        <input type="submit" value="Ingresar">
-    </form>
+    <div class="contenedor">
+        <h1>Ingreso</h1>
+        <?php if ($error): ?><p style="color:red;"><?= $error ?></p><?php endif; ?>
+        <form method="POST" action="ingreso.php">
+            <label>Cédula:</label>
+            <input type="text" name="cedula" required><br>
+            <label>Contraseña:</label>
+            <input type="password" name="clave" required><br>
+            <div class="botones">
+                <input type="submit" value="Ingresar">
+            </div>
+        </form>
+    </div>
 </body>
+
 </html>
