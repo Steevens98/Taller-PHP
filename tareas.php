@@ -43,93 +43,95 @@ list($pendientes, $completadas) = listarTareas($usuario);
 </head>
 
 <body>
+    <div class="contenedor">
+        <h1>Gestor de Tareas</h1>
+        <p><strong>Usuario:</strong> <?= htmlspecialchars($_SESSION["cedula"]) ?></p>
 
-<h1>Gestor de Tareas</h1>
+        <form method="POST">
+            <div class="agregar-tarea">
+                <input
+                    type="text"
+                    name="texto"
+                    placeholder="Escriba una nueva tarea..."
+                    required>
 
-<p>Usuario: <?= htmlspecialchars($_SESSION["cedula"]) ?></p>
+                <input
+                    type="submit"
+                    name="agregar"
+                    value="Agregar">
+            </div>
+        </form>
 
-<form method="POST">
+        <hr>
 
-    <input
-        type="text"
-        name="texto"
-        required
-    >
+        <h2>Pendientes</h2>
+        <?php if (count($pendientes) == 0) { ?>
+            <p>No existen tareas pendientes.</p>
+        <?php } ?>
+        <?php foreach ($pendientes as $tarea) { ?>
+            <div class="item-tarea">
+                <span>
+                    <?= htmlspecialchars($tarea[1]) ?>
+                </span>
 
-    <input
-        type="submit"
-        name="agregar"
-        value="Agregar"
-    >
+                <form method="POST">
+                    <input
+                        type="hidden"
+                        name="id"
+                        value="<?= $tarea[0] ?>">
 
-</form>
+                    <input
+                        type="submit"
+                        name="completar"
+                        value="Completar">
 
-<hr>
+                    <input
+                        type="submit"
+                        name="eliminar"
+                        value="Eliminar"
+                        class="btn-eliminar">
+                </form>
+            </div>
+        <?php } ?>
 
-<h2>Pendientes</h2>
+        <hr>
 
-<?php foreach ($pendientes as $tarea) { ?>
+        <h2>Completadas</h2>
+        <?php if (count($completadas) == 0) { ?>
+            <p>No existen tareas completadas.</p>
+        <?php } ?>
+        <?php foreach ($completadas as $tarea) { ?>
+            <div class="item-tarea">
+                <span>
+                    <?= htmlspecialchars($tarea[1]) ?>
+                </span>
 
-<p>
+                <form method="POST">
+                    <input
+                        type="hidden"
+                        name="id"
+                        value="<?= $tarea[0] ?>">
 
-<?= htmlspecialchars($tarea[1]) ?>
+                    <input
+                        type="submit"
+                        name="eliminar"
+                        value="Eliminar"
+                        class="btn-eliminar">
+                </form>
+            </div>
 
-<form method="POST" style="display:inline;">
+        <?php } ?>
 
-    <input
-        type="hidden"
-        name="id"
-        value="<?= $tarea[0] ?>">
+        <hr>
 
-    <input
-        type="submit"
-        name="completar"
-        value="Completar">
-
-    <input
-        type="submit"
-        name="eliminar"
-        value="Eliminar">
-
-</form>
-
-</p>
-
-<?php } ?>
-
-<hr>
-
-<h2>Completadas</h2>
-
-<?php foreach ($completadas as $tarea) { ?>
-
-<p>
-
-<?= htmlspecialchars($tarea[1]) ?>
-
-<form method="POST" style="display:inline;">
-
-    <input
-        type="hidden"
-        name="id"
-        value="<?= $tarea[0] ?>">
-
-    <input
-        type="submit"
-        name="eliminar"
-        value="Eliminar">
-
-</form>
-
-</p>
-
-<?php } ?>
-
-<hr>
-
-<p>
-    <a href="logout.php">Cerrar sesión</a>
-</p>
+        <div class="botones">
+            <form action="logout.php" method="POST">
+                <input
+                    type="submit"
+                    value="Cerrar sesión">
+            </form>
+        </div>
 
 </body>
+
 </html>

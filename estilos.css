@@ -80,3 +80,30 @@ code {
     display: inline-block;
     margin-right: 45px;
 }
+
+.agregar-tarea{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.agregar-tarea input[type="text"]{
+    flex: 1;
+}
+
+.item-tarea{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 0;
+}
+
+.item-tarea form{
+    display: inline;
+}
+
+input[type="submit"].btn-eliminar{
+    background-color: #dc3545;
+    color: white;
+}
