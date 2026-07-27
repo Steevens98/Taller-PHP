@@ -9,6 +9,7 @@
 
 <body>
 
+<div class="contenedor">
     <h1>Formulario de Registro</h1>
 
     <form action="bienvenido.php" method="POST">
@@ -51,11 +52,13 @@
             minlength="6"
             required><br><br>
 
-        <input type="submit" value="Registrar">
-        <input type="reset" value="Resetear">
+        <div class="botones">
+            <input type="submit" value="Registrar">
+            <input type="reset" value="Resetear">
+        </div>
 
     </form>
-
+</div>
 </body>
 
 </html>
